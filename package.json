@@ -1,0 +1,90 @@
+{
+  "name": "draft-js-checkable-list-plugin",
+  "version": "0.0.0",
+  "description": "Checkable list plugin for DraftJS",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "react",
+    "draft-js",
+    "draft-js-plugins",
+    "plugin",
+    "checkbox",
+    "check-list",
+    "checkable-list",
+    "checkable-list-item"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --progress",
+    "lint": "eslint src",
+    "type": "flow",
+    "jest": "jest",
+    "jest:coverage": "npm run jest -- --coverage --verbose && cat coverage/lcov.info | coveralls",
+    "test": "npm run lint && npm run type && npm run jest:coverage",
+    "clean:lib": "if [ -d lib ]; then rm -rf lib; fi",
+    "build:css": "stylus --compress < src/CheckableListItem.styl > lib/plugin.css",
+    "build:js": "babel -d lib src",
+    "prebuild": "npm run clean:lib",
+    "build": "npm run build:js && npm run build:css",
+    "favicon": "curl https://sugarshin.net/favicon.ico > build/favicon.ico",
+    "clean:build": "if [ -d build ]; then rm -rf build; fi",
+    "predocs": "npm run clean:build; mkdir -p build && npm run favicon",
+    "docs": "NODE_ENV=production webpack --progress"
+  },
+  "repository": "git@github.com:sugarshin/draft-js-checkable-list-plugin.git",
+  "author": "Shingo Sato <shinsugar@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "decorate-component-with-props": "^1.0.2",
+    "draft-js": "~0.9.1",
+    "immutable": "~3.7.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^17.0.2",
+    "babel-loader": "^6.2.9",
+    "babel-plugin-rewire": "^1.0.0",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "coveralls": "^2.11.15",
+    "css-loader": "^0.26.1",
+    "draft-js-plugins-editor": "2.0.0-beta9",
+    "enzyme": "^2.6.0",
+    "eslint": "^3.12.0",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-react": "^6.8.0",
+    "flow-bin": "^0.36.0",
+    "gh-pages": "^0.12.0",
+    "highlight.js": "^9.8.0",
+    "html-webpack-plugin": "^2.24.1",
+    "jest": "^17.0.3",
+    "react": "^15.4.1",
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-ghfork": "^0.3.5",
+    "react-hot-loader": "3.0.0-beta.6",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.4.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "peerDependencies": {
+    "draft-js-plugins-editor": "2.0.0-beta9",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "jest": {
+    "testRegex": "test/.+-test\\.js$"
+  }
+}
