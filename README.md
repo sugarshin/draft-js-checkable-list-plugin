@@ -55,7 +55,7 @@ class App extends Component {
 
 © sugarshin
 
-[circleci-image]: https://circleci.com/gh/sugarshin/draft-js-checkable-list-plugin/tree/master.svg?style=svg
+[circleci-image]: https://circleci.com/gh/sugarshin/draft-js-checkable-list-plugin/tree/master.svg?style=svg&circle-token=d416d2a32786c1e139bac37cf6864b310b1da172
 [circleci-url]: https://circleci.com/gh/sugarshin/draft-js-checkable-list-plugin/tree/master
 [coveralls-image]: https://coveralls.io/repos/github/sugarshin/draft-js-checkable-list-plugin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/sugarshin/draft-js-checkable-list-plugin?branch=master
