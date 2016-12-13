@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { EditorBlock, ContentBlock } from 'draft-js'
 import React, { Component } from 'react'

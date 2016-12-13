@@ -1,9 +1,12 @@
-/* @flow */
+// @flow
 
 import { EditorState } from 'draft-js'
 import adjustBlockDepthForContentState from 'draft-js/lib/adjustBlockDepthForContentState'
+import { CHECKABLE_LIST_ITEM, UNORDERED_LIST_ITEM, ORDERED_LIST_ITEM } from '../constants'
 
-const CHECKABLE_LIST_ITEM = 'checkable-list-item'
+const isList = (blockType: string): boolean => (
+  blockType === CHECKABLE_LIST_ITEM || blockType === UNORDERED_LIST_ITEM || blockType === ORDERED_LIST_ITEM
+)
 
 const adjustBlockDepth = (
   event: SyntheticKeyboardEvent,
@@ -20,7 +23,7 @@ const adjustBlockDepth = (
   const content = editorState.getCurrentContent()
   const block = content.getBlockForKey(key)
   const type = block.getType()
-  if (type !== CHECKABLE_LIST_ITEM) {
+  if (!isList(type)) {
     return editorState
   }
 
@@ -34,7 +37,7 @@ const adjustBlockDepth = (
   }
 
   const typeAbove = blockAbove.getType()
-  if (typeAbove !== CHECKABLE_LIST_ITEM) {
+  if (!isList(typeAbove)) {
     return editorState
   }
 

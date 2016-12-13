@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import type { EditorState } from 'draft-js'
 import type Editor from 'draft-js-plugins-editor'

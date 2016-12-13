@@ -1,7 +1,8 @@
-/* @flow */
+// @flow
+
+import { CHECKABLE_LIST_ITEM } from './constants'
 
 import type { ContentBlock } from 'draft-js'
-import { CHECKABLE_LIST_ITEM } from './constants'
 
 const blockStyleFn = (block: ContentBlock): ?string => {
   if (block.getType() === CHECKABLE_LIST_ITEM) {

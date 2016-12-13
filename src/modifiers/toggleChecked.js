@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import type { EditorState, ContentBlock } from 'draft-js'
 import mergeBlockMetadata from './mergeBlockMetadata'

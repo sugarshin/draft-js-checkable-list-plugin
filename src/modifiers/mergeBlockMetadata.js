@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { EditorState } from 'draft-js'
 
