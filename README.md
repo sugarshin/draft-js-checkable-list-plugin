@@ -3,8 +3,6 @@
 [![CircleCI][circleci-image]][circleci-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
-[![Dependency Status][david-image]][david-url]
-[![Devdependency Status][david-dev-image]][david-dev-url]
 [![npm version][npm-image]][npm-url]
 [![License][license-image]][license-url]
 
