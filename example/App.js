@@ -26,6 +26,15 @@ export default class App extends Component {
 
   onTab = e => this.onChange(RichUtils.onTab(e, this.state.editorState, 4))
 
+  handleKeyCommand = command => {
+    const newEditorState = RichUtils.handleKeyCommand(this.state.editorState, command)
+    if (newEditorState) {
+      this.onChange(newEditorState)
+      return 'handled'
+    }
+    return 'not-handled'
+  }
+
   componentDidMount() {
     this.focus()
     Array.from(document.querySelectorAll('pre')).forEach(el => hljs.highlightBlock(el))
@@ -37,8 +46,11 @@ export default class App extends Component {
         <Fork project='sugarshin/draft-js-checkable-list-plugin' className='right' />
         <h1>draft-js-checkable-list-plugin</h1>
         <div className='toolbar'>
-          <span onMouseDown={this.createMouseDownHandler('unordered-list-item')} style={this.getStyle('unordered-list-item')}>UL</span>
-          <span onMouseDown={this.createMouseDownHandler('ordered-list-item')} style={this.getStyle('ordered-list-item')}>OL</span>
+          {Object.entries({ UL: 'unordered-list-item', OL: 'ordered-list-item' }).map(([label, type]) =>
+            <span key={type} onMouseDown={this.createMouseDownHandler(type)} style={this.getStyle(type)}>
+              {label}
+            </span>
+          )}
           <Button editorState={this.state.editorState} />
         </div>
         <div onClick={this.focus}>
@@ -49,6 +61,7 @@ export default class App extends Component {
             plugins={plugins}
             onChange={this.onChange}
             onTab={this.onTab}
+            handleKeyCommand={this.handleKeyCommand}
           />
         </div>
         <div><pre>{code}</pre></div>
@@ -56,18 +69,18 @@ export default class App extends Component {
     )
   }
 
-  toggleBlockType(type: string) {
+  toggleBlockType(type) {
     this.onChange(RichUtils.toggleBlockType(this.state.editorState, type))
   }
 
-  createMouseDownHandler(type: string): Function {
-    return (ev: SyntheticEvent) => {
-      ev.preventDefault()
+  createMouseDownHandler(type) {
+    return e => {
+      e.preventDefault()
       this.toggleBlockType(type)
     }
   }
 
-  getStyle(type: string): Object {
+  getStyle(type) {
     return {
       cursor: 'pointer',
       margin: '0 1em 0 0',
