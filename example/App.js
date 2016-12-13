@@ -22,6 +22,8 @@ export default class App extends Component {
 
   focus = () => this.editor.focus()
 
+  onTab = e => this.onChange(RichUtils.onTab(e, this.state.editorState, 4))
+
   componentDidMount() {
     this.focus()
     Array.from(document.querySelectorAll('pre')).forEach(el => hljs.highlightBlock(el))
@@ -44,6 +46,7 @@ export default class App extends Component {
             editorState={this.state.editorState}
             plugins={plugins}
             onChange={this.onChange}
+            onTab={this.onTab}
           />
         </div>
         <div><pre>{code}</pre></div>
