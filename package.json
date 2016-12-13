@@ -24,7 +24,7 @@
     "jest:coverage": "npm run jest -- --coverage && cat coverage/lcov.info | coveralls",
     "test": "npm run lint && npm run type && npm run jest:coverage",
     "clean:lib": "if [ -d lib ]; then rm -rf lib; fi",
-    "build:css": "stylus --compress < src/CheckableListItem.styl > lib/plugin.css",
+    "build:css": "cat src/CheckableListItem.styl src/Button.styl | stylus --compress > lib/plugin.css",
     "build:js": "babel -d lib src",
     "prebuild": "npm run clean:lib",
     "build": "npm run build:js && npm run build:css",
@@ -41,7 +41,8 @@
   "dependencies": {
     "decorate-component-with-props": "^1.0.2",
     "draft-js": "~0.9.1",
-    "immutable": "~3.7.4"
+    "immutable": "~3.7.4",
+    "union-class-names": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

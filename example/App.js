@@ -9,11 +9,13 @@ import { EditorState, RichUtils } from 'draft-js'
 import Editor from 'draft-js-plugins-editor'
 import hljs from 'highlight.js'
 import createCheckableListPlugin from '../src'
-import '../src/CheckableListItem.styl'
 import code from './example-code'
+import '../src/CheckableListItem.styl'
+import '../src/Button.styl'
 
 const checkableListPlugin = createCheckableListPlugin()
 const plugins = [checkableListPlugin]
+const { Button } = checkableListPlugin
 
 export default class App extends Component {
   state = { editorState: EditorState.createEmpty() }
@@ -37,7 +39,7 @@ export default class App extends Component {
         <div className='toolbar'>
           <span onMouseDown={this.createMouseDownHandler('unordered-list-item')} style={this.getStyle('unordered-list-item')}>UL</span>
           <span onMouseDown={this.createMouseDownHandler('ordered-list-item')} style={this.getStyle('ordered-list-item')}>OL</span>
-          <span onMouseDown={this.createMouseDownHandler('checkable-list-item')} style={this.getStyle('checkable-list-item')}>✔</span>
+          <Button editorState={this.state.editorState} />
         </div>
         <div onClick={this.focus}>
           <Editor
@@ -69,7 +71,7 @@ export default class App extends Component {
     return {
       cursor: 'pointer',
       margin: '0 1em 0 0',
-      color: RichUtils.getCurrentBlockType(this.state.editorState) === type ? 'indianred' : 'inherit',
+      opacity: RichUtils.getCurrentBlockType(this.state.editorState) === type ? 1 : .4,
     }
   }
 }
