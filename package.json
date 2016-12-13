@@ -20,8 +20,8 @@
     "start": "webpack-dev-server --progress",
     "lint": "eslint src",
     "type": "flow",
-    "jest": "jest",
-    "jest:coverage": "npm run jest -- --coverage --verbose && cat coverage/lcov.info | coveralls",
+    "jest": "jest --verbose",
+    "jest:coverage": "npm run jest -- --coverage && cat coverage/lcov.info | coveralls",
     "test": "npm run lint && npm run type && npm run jest:coverage",
     "clean:lib": "if [ -d lib ]; then rm -rf lib; fi",
     "build:css": "stylus --compress < src/CheckableListItem.styl > lib/plugin.css",
@@ -32,7 +32,8 @@
     "clean:build": "if [ -d build ]; then rm -rf build; fi",
     "predocs": "npm run clean:build; mkdir -p build && npm run favicon",
     "docs": "NODE_ENV=production webpack --progress",
-    "postdocs": "gh-pages -x -m 'Update [ci skip]' -d build -r https://github.com/sugarshin/draft-js-checkable-list-plugin.git"
+    "postdocs": "gh-pages -x -m 'Update [ci skip]' -d build -r https://github.com/sugarshin/draft-js-checkable-list-plugin.git",
+    "prepublish": "npm run lint && npm run type && npm run jest && NODE_ENV=production BABEL_ENV=production npm run build"
   },
   "repository": "git@github.com:sugarshin/draft-js-checkable-list-plugin.git",
   "author": "Shingo Sato <shinsugar@gmail.com>",
