@@ -1,5 +1,5 @@
+import { CHECKABLE_LIST_ITEM, UNORDERED_LIST_ITEM } from 'draft-js-checkable-list-item'
 import createBlockRenderMap, { wrapper } from '../src/createBlockRenderMap'
-import { CHECKABLE_LIST_ITEM, UNORDERED_LIST_ITEM } from '../src/constants'
 
 describe('createBlockRenderMap', () => {
   it('return default blockRenderMap', () => {

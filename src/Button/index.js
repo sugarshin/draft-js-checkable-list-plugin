@@ -2,8 +2,8 @@
 
 import React, { Component } from 'react'
 import { RichUtils } from 'draft-js'
+import { CHECKABLE_LIST_ITEM } from 'draft-js-checkable-list-item'
 import unionClassNames from 'union-class-names'
-import { CHECKABLE_LIST_ITEM } from '../constants'
 import DefaultIcon from './DefaultIcon'
 
 import type { EditorState } from 'draft-js'
@@ -32,7 +32,7 @@ export default class Button extends Component {
     )
   }
 
-  blockTypeIsActive = (): boolean => {
+  isActive = (): boolean => {
     return RichUtils.getCurrentBlockType(this.props.editorState) === CHECKABLE_LIST_ITEM
   }
 
@@ -40,7 +40,7 @@ export default class Button extends Component {
     const { theme, children } = this.props
     const button = theme.button || 'checkable-list-item-button'
     const active = theme.active || 'active'
-    const className = this.blockTypeIsActive() ? unionClassNames(button, active) : button
+    const className = this.isActive() ? unionClassNames(button, active) : button
     return (
       <span
         className={className}

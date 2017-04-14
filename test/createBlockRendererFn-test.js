@@ -1,8 +1,7 @@
 import { ContentBlock } from 'draft-js'
 import { Map } from 'immutable'
+import { CheckableListItem, CHECKABLE_LIST_ITEM } from 'draft-js-checkable-list-item'
 import createBlockRendererFn from '../src/createBlockRendererFn'
-import CheckableListItem from '../src/CheckableListItem'
-import { CHECKABLE_LIST_ITEM } from '../src/constants'
 
 describe('createBlockRendererFn', () => {
   it('render `checkable-list-item` block', () => {
