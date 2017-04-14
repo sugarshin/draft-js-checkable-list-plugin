@@ -1,6 +1,6 @@
 // @flow
 
-import { CHECKABLE_LIST_ITEM } from './constants'
+import { CHECKABLE_LIST_ITEM } from 'draft-js-checkable-list-item'
 
 import type { ContentBlock } from 'draft-js'
 

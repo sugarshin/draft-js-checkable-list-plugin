@@ -1,30 +1,18 @@
 // @flow
 
-import React from 'react'
+import {
+  blockRenderMap,
+  blockRenderMapForSameWrapperAsUnorderedListItem,
+  WRAPPER as wrapper
+} from 'draft-js-checkable-list-item'
 import { Map } from 'immutable'
-import { CHECKABLE_LIST_ITEM, UNORDERED_LIST_ITEM } from './constants'
 
-// https://github.com/facebook/draft-js/blob/master/src/model/immutable/DefaultDraftBlockRenderMap.js#L20
-const wrapper = <ul className='public-DraftStyleDefault-ul' />
+import type { Config } from './types/Config'
 
-const createBlockRenderMap = (config: Object): Map => {
-  const blockRenderMap = Map({
-    [CHECKABLE_LIST_ITEM]: {
-      element: 'li',
-      wrapper,
-    },
-  })
-
-  if (config.sameWrapperAsUnorderedListItem) {
-    return blockRenderMap.merge(Map({
-      [UNORDERED_LIST_ITEM]: {
-        element: 'li',
-        wrapper,
-      },
-    }))
-  }
-
-  return blockRenderMap
+const createBlockRenderMap = (config: Config): Map => {
+  return config.sameWrapperAsUnorderedListItem ?
+    blockRenderMapForSameWrapperAsUnorderedListItem :
+    blockRenderMap
 }
 
 export default createBlockRenderMap

@@ -1,6 +1,6 @@
 import { ContentBlock } from 'draft-js'
+import { CHECKABLE_LIST_ITEM } from 'draft-js-checkable-list-item'
 import blockStyleFn from '../src/blockStyleFn'
-import { CHECKABLE_LIST_ITEM } from '../src/constants'
 
 describe('blockStyleFn', () => {
   it('return value is `checkable-list-item` ', () => {

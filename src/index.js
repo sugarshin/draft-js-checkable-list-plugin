@@ -1,14 +1,16 @@
 // @flow
 
+import { CheckableListItem } from 'draft-js-checkable-list-item'
 import decorateComponentWithProps from 'decorate-component-with-props'
 import createBlockRendererFn from './createBlockRendererFn'
 import createBlockRenderMap from './createBlockRenderMap'
 import createOnTab from './createOnTab'
 import blockStyleFn from './blockStyleFn'
-import CheckableListItem from './CheckableListItem'
 import Button from './Button'
 
-const checkableListPlugin = (config: Object = {}): Object => {
+import type { Config } from './types/Config'
+
+const checkableListPlugin = (config: Config = {}): Object => {
   const store = {
     getEditorState: null,
     setEditorState: null,

@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const pkg = require('./package.json')
@@ -45,23 +46,35 @@ module.exports = {
   entry,
   cache: true,
   output: {
-    path: 'build',
+    path: path.resolve(__dirname, 'build'),
     filename: 'app.js',
   },
+  resolve: {
+    alias: {
+      [pkg.name]: path.resolve(__dirname, 'src/'),
+    },
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
       },
       {
         test: /\.styl$/,
-        loaders: ['style', 'css?minimize', 'stylus'],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { minimize: true } },
+          { loader: 'stylus-loader' },
+        ],
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css?minimize'],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { minimize: true } },
+        ],
       },
     ],
   },
