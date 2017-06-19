@@ -15,7 +15,7 @@ describe('onTab', () => {
   })
 
   afterEach(() => {
-    createOnTab.__ResetDependency__('CheckableListItemUtils');
+    createOnTab.__ResetDependency__('CheckableListItemUtils')
   })
 
   it('return value is `function` ', () => {

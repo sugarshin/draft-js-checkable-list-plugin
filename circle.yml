@@ -1,7 +1,7 @@
 machine:
-  timezone: Asia/Tokyo
+  timezone: UTC
   node:
-    version: 6.10.2
+    version: 6.11.0
   pre:
     - git config --global user.name "CircleCI"
     - git config --global user.email "s+circleci@sugarshin.net"
@@ -18,6 +18,11 @@ dependencies:
     - yarn
   cache_directories:
     - "~/.cache/yarn"
+test:
+  override:
+    - npm run lint
+    - npm run type
+    - npm run test:coverage:report
 deployment:
   master:
     branch: master
