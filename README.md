@@ -9,7 +9,7 @@
 Checkable list item plugin for the [draft-js-plugins-editor](https://github.com/draft-js-plugins/draft-js-plugins) .
 
 ```sh
-npm i draft-js-checkable-list-plugin
+yarn add draft-js-checkable-list-plugin
 ```
 
 [Live demo](https://sugarshin.github.io/draft-js-checkable-list-plugin/)
@@ -59,9 +59,5 @@ class App extends Component {
 [coveralls-url]: https://coveralls.io/github/sugarshin/draft-js-checkable-list-plugin?branch=master
 [npm-image]: https://img.shields.io/npm/v/draft-js-checkable-list-plugin.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/draft-js-checkable-list-plugin
-[david-image]: https://david-dm.org/sugarshin/draft-js-checkable-list-plugin.svg?style=flat-square
-[david-url]: https://david-dm.org/sugarshin/draft-js-checkable-list-plugin
-[david-dev-image]: https://david-dm.org/sugarshin/draft-js-checkable-list-plugin/dev-status.svg?style=flat-square
-[david-dev-url]: https://david-dm.org/sugarshin/draft-js-checkable-list-plugin#info=devDependencies
 [license-image]: https://img.shields.io/:license-mit-blue.svg?style=flat-square
 [license-url]: https://sugarshin.mit-license.org/
