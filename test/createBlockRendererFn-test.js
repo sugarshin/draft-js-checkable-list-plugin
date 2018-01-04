@@ -3,6 +3,8 @@ import { Map } from 'immutable'
 import { CheckableListItem, CHECKABLE_LIST_ITEM } from 'draft-js-checkable-list-item'
 import createBlockRendererFn from '../src/createBlockRendererFn'
 
+jest.unmock('draft-js-checkable-list-item')
+
 describe('createBlockRendererFn', () => {
   it('render `checkable-list-item` block', () => {
     const block = new ContentBlock({ key: 'item0', type: CHECKABLE_LIST_ITEM, data: Map({ checked: true }) })

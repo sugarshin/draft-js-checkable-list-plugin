@@ -1,6 +1,8 @@
 import { Map } from 'immutable'
 import createPlugin from '../src'
 
+jest.unmock('draft-js-checkable-list-item')
+
 describe('createPlugin', () => {
   it('create plugin', () => {
     const ret = createPlugin({})
