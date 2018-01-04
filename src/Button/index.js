@@ -19,10 +19,8 @@ export type Props = {
   children: ?*,
 }
 
-export default class Button extends Component {
-  props: Props
-
-  toggleType = (event: SyntheticEvent): void => {
+export default class Button extends Component<Props> {
+  toggleType = (event: SyntheticEvent<HTMLButtonElement>): void => {
     event.preventDefault()
     this.props.store.setEditorState(
       RichUtils.toggleBlockType(

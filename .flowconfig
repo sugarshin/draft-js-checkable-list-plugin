@@ -1,5 +1,6 @@
 [ignore]
 .*/node_modules/promise/
+.*/node_modules/draft-js/lib/DraftEditor.react.js.flow
 
 [include]
 
