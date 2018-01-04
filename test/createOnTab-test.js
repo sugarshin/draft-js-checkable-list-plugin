@@ -1,22 +1,9 @@
 import createOnTab from '../src/createOnTab'
 
+jest.mock('draft-js-checkable-list-item')
+
 describe('onTab', () => {
   const config = { maxDepth: 4 }
-
-  const mockOnTab = (e, editorState) => {
-    if (editorState.param === 0) {
-      return editorState
-    }
-    return {}
-  }
-
-  beforeEach(() => {
-    createOnTab.__Rewire__('CheckableListItemUtils', { onTab: mockOnTab })
-  })
-
-  afterEach(() => {
-    createOnTab.__ResetDependency__('CheckableListItemUtils')
-  })
 
   it('return value is `function` ', () => {
     const ret = createOnTab(config)

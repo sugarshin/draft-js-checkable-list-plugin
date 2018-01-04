@@ -4,6 +4,8 @@ import { CHECKABLE_LIST_ITEM } from 'draft-js-checkable-list-item'
 import { shallow } from 'enzyme'
 import Button from '../../src/Button'
 
+jest.unmock('draft-js-checkable-list-item')
+
 describe('<Button />', () => {
   it('render with default icon', () => {
     expect(
