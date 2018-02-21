@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hot } from 'react-hot-loader'
 import Fork from 'react-ghfork'
 import hljs from 'highlight.js'
 import code from './example-code'
@@ -8,7 +9,7 @@ import 'react-ghfork/gh-fork-ribbon.css'
 import 'highlight.js/styles/github.css'
 import './App.styl'
 
-export default class App extends Component {
+class App extends Component {
   componentDidMount() {
     this.demoEditor.focus()
     Array.from(document.querySelectorAll('pre')).forEach(el => hljs.highlightBlock(el))
@@ -25,3 +26,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default hot(module)(App)
