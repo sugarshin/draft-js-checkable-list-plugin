@@ -33,7 +33,7 @@
     "predocs": "npm run clean:build; mkdir -p build && npm run favicon",
     "docs": "NODE_ENV=production webpack --progress",
     "postdocs": "gh-pages -x -m 'Update [ci skip]' -d build -r https://github.com/sugarshin/draft-js-checkable-list-plugin.git",
-    "prepublish": "npm run lint && npm run type && npm run test:coverage && NODE_ENV=production BABEL_ENV=production npm run build"
+    "prepublishOnly": "npm run lint && npm run type && npm run test:coverage && NODE_ENV=production BABEL_ENV=production npm run build"
   },
   "repository": "git@github.com:sugarshin/draft-js-checkable-list-plugin.git",
   "author": "Shingo Sato <shinsugar@gmail.com>",
