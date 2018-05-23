@@ -1,6 +1,6 @@
 {
   "name": "draft-js-checkable-list-plugin",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Checkable list plugin for DraftJS",
   "main": "lib/index.js",
   "module": "es/index.js",
