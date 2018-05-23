@@ -27,4 +27,5 @@ deployment:
   master:
     branch: master
     commands:
-      - npm run docs
+      - npm run build:demo
+      - npm run deploy

@@ -4,7 +4,8 @@
   "description": "Checkable list plugin for DraftJS",
   "main": "lib/index.js",
   "files": [
-    "lib"
+    "lib",
+    "es"
   ],
   "keywords": [
     "react",
@@ -23,17 +24,20 @@
     "test": "jest --verbose",
     "test:coverage": "npm test -- --coverage",
     "test:coverage:report": "npm run test:coverage && cat coverage/lcov.info | coveralls",
+    "clean:es": "if [ -d es ]; then rm -rf es; fi",
     "clean:lib": "if [ -d lib ]; then rm -rf lib; fi",
     "build:css": "stylus --compress -p src/Button.styl | cat node_modules/draft-js-checkable-list-item/lib/CheckableListItem.css - > lib/plugin.css",
-    "build:js": "babel -d lib src",
-    "prebuild": "npm run clean:lib",
+    "build:js": "npm run build:commonjs && npm run build:es",
+    "build:es": "NODE_ENV=production BABEL_ENV=es babel -d es src",
+    "build:commonjs": "NODE_ENV=production BABEL_ENV=commonjs babel -d lib src",
+    "prebuild": "npm run clean:lib && npm run clean:es",
     "build": "npm run build:js && npm run build:css",
     "favicon": "curl https://sugarshin.net/favicon.ico > build/favicon.ico",
     "clean:build": "if [ -d build ]; then rm -rf build; fi",
-    "predocs": "npm run clean:build; mkdir -p build && npm run favicon",
-    "docs": "NODE_ENV=production webpack --progress",
-    "postdocs": "gh-pages -x -m 'Update [ci skip]' -d build -r https://github.com/sugarshin/draft-js-checkable-list-plugin.git",
-    "prepublishOnly": "npm run lint && npm run type && npm run test:coverage && NODE_ENV=production BABEL_ENV=production npm run build"
+    "prebuild:demo": "npm run clean:build; mkdir -p build && npm run favicon",
+    "build:demo": "NODE_ENV=production webpack",
+    "deploy": "gh-pages -x -m 'Update [ci skip]' -d build -r https://github.com/sugarshin/draft-js-checkable-list-plugin.git",
+    "prepublishOnly": "npm run lint && npm run type && npm run test:coverage && npm run build"
   },
   "repository": "git@github.com:sugarshin/draft-js-checkable-list-plugin.git",
   "author": "Shingo Sato <shinsugar@gmail.com>",
