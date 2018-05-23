@@ -3,6 +3,8 @@
   "version": "4.0.1",
   "description": "Checkable list plugin for DraftJS",
   "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "files": [
     "lib",
     "es"
